@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-bootstrap5 = "*"
+django-tempus-dominus = "*"
+pillow = "*"
+psycopg2-binary = "*"
+
+[dev-packages]
+black = "*"
+isort = "*"
+djlint = "*"
+
+[requires]
+python_version = "3.11"

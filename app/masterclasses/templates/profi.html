@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Profi | {{ profi.first_name }} {{ profi.last_name }}
+{% endblock title %}
+
+{% block content %}
+    <section class="container py-5">
+        {{ profi.username }}
+    </section>
+{% endblock content %}
