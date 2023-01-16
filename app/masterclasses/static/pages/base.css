@@ -11,3 +11,7 @@
 
 /* hero */
 @import url("../blocks/hero/hero.css");
+
+@import url("../blocks/cards/card__description.css");
+@import url("../blocks/cards/card__name.css");
+@import url("../blocks/cards/card__image.css");

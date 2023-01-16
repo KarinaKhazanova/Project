@@ -1,0 +1,5 @@
+.card__name {
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-height: 50px;
+}

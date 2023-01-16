@@ -9,6 +9,8 @@ django-bootstrap5 = "*"
 django-tempus-dominus = "*"
 pillow = "*"
 psycopg2-binary = "*"
+gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 black = "*"

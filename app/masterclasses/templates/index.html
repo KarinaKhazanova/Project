@@ -26,11 +26,11 @@
                 <div class="card" style="width: 18rem">
 
                     {% if mc.cover %}
-                        <img class="card-img-top" src="{{ mc.cover.url }}" alt="Card image cap"/>
+                        <img class="card-img-top card__image" src="{{ mc.cover.url }}" alt="Card image cap"/>
                     {% endif %}
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ mc.name }}</h5>
+                        <h5 class="card-title card-name">{{ mc.name }}</h5>
                         <div>
 
                             {% for category in mc.category.all %}
@@ -38,7 +38,7 @@
                             {% endfor %}
 
                         </div>
-                        <p class="card-text">{{ mc.description }}</p>
+                        <p class="card-text card__description">{{ mc.description }}</p>
                         <p class="card-text">Price: {{ mc.price }}</p>
                         <a href="{% url 'masterclass_view' mc.id %}" class="btn btn-primary">
                             Open
