@@ -21,8 +21,9 @@ from masterclasses.models import (
 
 SEARCH_KEY = "search"
 CATEGORY_KEY = "category"
-MC_PUBLIC = MasterclassType.objects.get(name="public")
-MC_PRIVATE = MasterclassType.objects.get(name="private")
+
+MC_PUBLIC ="public"
+MC_PRIVATE = "private"
 
 # Create your views here.
 class SignupView(CreateView):
@@ -61,19 +62,19 @@ def masterclass_view(request: HttpRequest, masterclass_id: int) -> HttpResponse:
     context = {}
     mc = Masterclass.objects.get(id=masterclass_id)
     date = None
-    if mc.mc_type == MC_PUBLIC:
+    if mc.mc_type == MasterclassType.objects.get(MC_PUBLIC):
         date = MasterclassDate.objects.get(masterclass=mc).date
     else:
         date = [d.date for d in MasterclassDate.objects.filter(masterclass=mc).all()]
     if request.method == "POST":
         form = None
-        if mc.mc_type == MC_PUBLIC:
+        if mc.mc_type == MasterclassType.objects.get(MC_PUBLIC):
             form = StudentForm(request.POST)
         else:
             form = StudentFormPrivate(request.POST, enabled_dates=date)
 
         if form.is_valid():
-            if mc.mc_type == MC_PUBLIC:
+            if mc.mc_type == MasterclassType.objects.get(MC_PUBLIC):
                 check_student = mc.students.filter(name=form.instance.name).first()
             else:
                 form.instance.masterclass_date = form.cleaned_data["masterclass_date"]
@@ -89,7 +90,7 @@ def masterclass_view(request: HttpRequest, masterclass_id: int) -> HttpResponse:
         )
     else:
 
-        if mc.mc_type == MC_PUBLIC:
+        if mc.mc_type == MasterclassType.objects.get(MC_PUBLIC):
             form = StudentForm()
         else:
             form = StudentFormPrivate(enabled_dates=date)
